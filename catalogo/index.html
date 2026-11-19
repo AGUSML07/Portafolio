@@ -327,6 +327,7 @@ window.addEventListener('popstate', route);
 let tt; function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(()=>t.classList.remove('on'), 1800); }
 
 renderChips(); renderGrid(); updateN();
+if(ADMIN){ const b=document.createElement('a'); b.href='?admin=0'; b.title='Tocar para salir del modo admin'; b.textContent='ADMIN'; b.style.cssText='position:fixed;left:12px;bottom:12px;z-index:30;background:#e8ff5a;color:#121300;font-weight:800;font-size:12px;padding:6px 10px;border-radius:999px;text-decoration:none'; document.body.appendChild(b); }
 if(location.hash){ const h = location.hash; history.replaceState(null,'',location.pathname); history.pushState({p: +(h.match(/^#p(\d+)$/)||[])[1] || null, cart: h==='#pedido'?1:null}, '', h); route(); }
 })();
 </script>
